@@ -1,0 +1,144 @@
+"""
+" Welcome to the .vimrc of B16-1DEA!
+""""""""""""""""""""""""""""""""""""
+" I recently wiped away my old .vimrc which, viewed from a sysadmin perspective,
+" was a grotesque conglomeration of mixed concerns and configuration oversteps.
+"
+" With this renewed configuration, I intend to avoid repeating past mistakes
+" and to clean up / modernize my plugin architecture.
+"
+" Though I use plain VIM (VI Improved), I intend for this configuration to be
+" usable for NeoVIM users as well.
+"
+" Feel free to use this and to offer suggestions of any kind.
+"""
+
+"""
+" UTF-8 is the way.
+"""""""""""""""""""
+" Set some configs to ensure UTF-8 is the preferred encoding.
+"""
+set encoding=utf-8
+set fileencoding=utf-8
+
+"""
+" Key bindings.
+"""""""""""""""
+" Starting from scratch, avoiding plugins that claim to be all and end all.
+""""
+
+" Tabbed browing
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Since I use Ctrl+V for visual blocks, I am free to map Ctrl+q for 'delete current buffer'
+" This works great with the above.
+map <C-q> :bd<CR>
+
+"""
+" Load Plugins
+""""""""""""""
+" Use Vim's native plugin manager to load all plugins in ~/.vim/pack/dist/*
+" and to load some other plugins more explicitly using packadd.
+" (Shoutout to Airline!)
+"
+" See:
+"   * https://vimhelp.org/repeat.txt.html#packages
+"""
+packloadall
+packadd airline
+packadd airline-themes
+packadd github
+
+" Enable Github copilot
+:Copilot enable
+
+""
+" Theme Stuff
+"""""""""""""
+" Some of the conditional logic and comments directly
+" ahead were copy-pasted from the internet with the goal of keeping this
+" configuration somewhat portable, given that I'm going to share it as a
+" public gist.
+"""
+
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+" If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+"
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+"""
+" vim-airline Settings
+""""""""""""""""""""""
+"
+" See:
+" * https://github.com/vim-airline/vim-airline/blob/ff7352e4bff02eb600a136b6fd741404f3195371/README.md
+"""
+
+" Enable airline's tabline.
+let g:airline#extensions#tabline#enabled = 1
+
+" Certain separators in certain locations (e.g. left separator on the top-bar
+" on its left side, which separates tab names).
+let g:airline_powerline_fonts = 1
+
+" Sadly, I cannot seem to get a patched font that works for airline (late 2023).
+" Too much time has been spent, so let's directly assign symbols we've pasted from
+" the internet to the module's respectively named variables for separators, icons,
+" indicators, etc.
+"
+" Hence, if you've installed a properly patched font on your system and have
+" configured your console implementation to favor it, you should NOT need
+" this section.
+let g:airline_right_sep        = '◀'
+let g:airline_right_alt_sep    = '«'
+let g:airline_left_sep         = '►'
+let g:airline_left_alt_sep     = '»'
+let g:airline_symbols.linenr   = '␊'
+let g:airline_symbols.branch   = '⎇'
+let g:airline_symbols.paste    = 'ρ'
+let g:airline_symbols.readonly = '∥'
+
+"""
+" Final Theme Settings.
+"""""""""""""""""""""""
+" Currently I run OneDark.
+"""
+syntax on
+colorscheme onedark
+
+"""
+" Keyboard Behavior other than Bindings
+"""""""""""""""""""""""""""""""""""""""
+" Set the default tab width to 2 spaces.
+"""
+set tabstop=2
+
+"""
+" HACKS
+"""""""
+" Ever since I installed the Github Copilot plugin, VIM has been unable to exit without
+" non-consensually relocating my cursor to the top of the terminal window. 
+" 
+" To fix the above, I've defined the following alias in my bashrc:
+" # Vim exits to clear terminal screen
+" function vim {
+"    /usr/bin/env vim "$@" && clear
+" }
+"""

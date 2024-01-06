@@ -1,0 +1,47 @@
+#!/bin/sh
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+# Start some nice programs
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
+# TODO consider moving some of these program invocations as planted files in /etc/X11/xinit/xinitrc.d
+# from which the above loop would find + run them. Order matters, though, so I'll have to figure
+# something out for that.
+exec i3 &
+exec xterm &
+exec xterm &
+exec $HOME/.config/polybar/launch.sh &
+exec $HOME/.fehbg &
+exec xterm
+
+# Note above that the final `exec xterm` probably should not be launched in the background.
+# Also note above that order of operations matter for this configuration. Neither the status bar nor the background will appear if the non-bakgrounded xterm call precedes.
+
+# Also note that starting an xterm in the below fashion (with a -name argument specified) ignores the font config
+#exec xterm -geometry 80x66+0+0 -name login

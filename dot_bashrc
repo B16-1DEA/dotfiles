@@ -1,0 +1,43 @@
+#!/usr/bin/env/ bash
+
+###################################
+# Copied from default (/etc/skel) #
+###################################
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Color in ls and grep
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# LL to list files in cwd
+#  -l vertically
+#  -a all, including hidden
+#  -h human-readable units
+alias ll='ls -lah'
+
+# Lynx is unusable out of the box because of all the cookie prompts.
+# Therefore, we
+# Lynx (overridden) to efficiently surf the web
+# 	-accept-all-cookies to eliminate X cookie-prompts per page-load
+# 	-cookie-file set to /dev/null
+#
+# 	TODO Test with -reject-all-cookies, but I suspect we'd be treated
+# 	to a less inviting WWW
+alias lynx="lynx -accept-all-cookies -cookie-file='/dev/null'"
+
+# Since insalling the Github Copilot plugin for VIM, it has been resetting my cursor to the top
+# of the screen after every exit of the app. This works around it.
+# Vim exits to clear terminal screen
+function vim {
+   /usr/bin/env vim "$@" && clear
+}
+
+# XTerm windows are opaque, but I've gotten around it (as others have) by installing transset-df and xcompmgr and activating like so:
+# TODO sadly, I can't remember if this is actually working
+[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
+
+PATH=$PATH:$HOME/bin
+
