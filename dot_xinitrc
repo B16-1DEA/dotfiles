@@ -38,6 +38,7 @@ exec xterm &
 exec xterm &
 exec $HOME/.config/polybar/launch.sh &
 exec $HOME/.fehbg &
+exec albert &
 exec xterm
 
 # Note above that the final `exec xterm` probably should not be launched in the background.
