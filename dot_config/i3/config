@@ -33,7 +33,7 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # JAH - As you an see, I do indeed use the combination of xss-lock, nm-applet and pactl.
 # The file lock_image is a symbolic link to a jpg. I did this so I can change the image without having to change the config file.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i /home/roothopper/.config/i3/lock_image --tiling
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lockmore --nofork --image-fill /home/roothopper/.config/i3/lock_image
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -162,6 +162,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# TODO Consider taking out this resize function. I don't use it, and
+# the one time I used it by accidetn, it was a pain to get out of.
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -189,14 +191,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# I have spent too many hours trying to figure out why the first xterm looks different from the others, so let's just have a way to hide it. 
+# I have spent too many hours trying to figure out why the first xterm looks different from the others, so let's just have a way to hide it.
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-## Start i3bar to display a workspace bar (plus the system information i3status
-## finds out, if available)
-## JAH - Using polybar instead, so I commented this out. 
-#bar {
-#        status_command i3status
-#}
 
