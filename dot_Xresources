@@ -7,7 +7,7 @@
 
 ! This one is a favorite
 !xterm*faceName: font pango: JetBrainsMonoNerdFontPropo-Medium 11
-xterm*faceName: font pango: "Fira Mono for Powerline:style=Medium" 11
+!xterm*faceName: font pango: "Material Icons:style=Regular" 11
 
 ! Will this work with Powerline?
 !xterm*faceName: font pango: Source Code Pro Medium for Powerline 11
