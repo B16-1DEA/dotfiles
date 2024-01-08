@@ -134,11 +134,14 @@ set tabstop=2
 " HACKS
 """""""
 " Ever since I installed the Github Copilot plugin, VIM has been unable to exit without
-" non-consensually relocating my cursor to the top of the terminal window. 
-" 
+" non-consensually relocating my cursor to the top of the terminal window without 
+" clearing the screen. 
+"
 " To fix the above, I've defined the following alias in my bashrc:
 " # Vim exits to clear terminal screen
 " function vim {
 "    /usr/bin/env vim "$@" && clear
 " }
+"
+" This is a hack. It works in most situations, but there are still some edge cases (e.g. ctrl+z) that see problematic cursor behavior on close.
 """
