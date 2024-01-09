@@ -8,12 +8,13 @@
 ! This one is a favorite
 !xterm*faceName: font pango: JetBrainsMonoNerdFontPropo-Medium 11
 !xterm*faceName: font pango: "Material Icons:style=Regular" 11
+!xterm*faceName: font pango: "Bungee Spice:style=Regular" 11
 
 ! Will this work with Powerline?
-!xterm*faceName: font pango: Source Code Pro Medium for Powerline 11
+xterm*faceName: font pango: Source Code Pro Medium for Powerline 11
 
 ! Get rid of the annoying ass scrollbarin Urxvt active. TODO remove if I can. 
-URxvt.scrollBar: false
+URxvt.scrollBar: true
 
 ! Grabbed locally out of ~/Themes/Xresources/Xresources-themes/
 !
