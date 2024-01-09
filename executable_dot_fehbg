@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+SYMLINK='/home/roothopper/Resources/Images/Wallpapers/bg'
+# Test whether the symlink exists	
+if [ -L $SYMLINK ]; then
+	# Test whether the symlink is broken
+	if [ ! -e $SYMLINK ]; then
+		# Remove the broken symlink
+		rm $SYMLINK
+		# Create a new symlink
+		ln -s $(find /home/roothopper/Resources/Images/Wallpapers/ -type f | shuf -n 1) $SYMLINK
+	fi
+else
+	# Create a new symlink
+	ln -s $(find /home/roothopper/Resources/Images/Wallpapers/ -type f | shuf -n 1) $SYMLINK
+fi
+# Set the wallpaper
+feh --no-fehbg --bg-scale "$SYMLINK"
