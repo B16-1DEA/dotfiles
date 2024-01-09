@@ -108,7 +108,7 @@ let g:airline_powerline_fonts = 1
 " this section.
 let g:airline_right_sep        = ' '
 let g:airline_right_alt_sep    = '«'
-let g:airline_left_sep         = ' '  
+let g:airline_left_sep         = ' '
 let g:airline_left_alt_sep     = '►'
 let g:airline_symbols.linenr   = '␊'
 let g:airline_symbols.branch   = '⎇'
@@ -134,8 +134,8 @@ set tabstop=2
 " HACKS
 """""""
 " Ever since I installed the Github Copilot plugin, VIM has been unable to exit without
-" non-consensually relocating my cursor to the top of the terminal window without 
-" clearing the screen. 
+" non-consensually relocating my cursor to the top of the terminal window without
+" clearing the screen.
 "
 " To fix the above, I've defined the following alias in my bashrc:
 " # Vim exits to clear terminal screen
