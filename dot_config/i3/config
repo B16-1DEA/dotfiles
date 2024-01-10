@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# I use the Windows key as the mod key. 
+# I use the Windows key as the mod key.
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -27,12 +27,13 @@ font pango:monospace 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# Lock the screen with a custom background image
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# JAH - As you an see, I do indeed use the combination of xss-lock, nm-applet and pactl.
+# JAH - As you an see, I do indeed use the combination of xss-lockmore, nm-applet and pactl.
 # The file lock_image is a symbolic link to a jpg. I did this so I can change the image without having to change the config file.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lockmore --nofork --image-fill /home/roothopper/.config/i3/lock_image
 
@@ -55,8 +56,8 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal but don't load bash_profile
+bindsym $mod+Return exec i3-sensible-terminal +ls
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -195,5 +196,4 @@ bindsym $mod+r mode "resize"
 # I have spent too many hours trying to figure out why the first xterm looks different from the others, so let's just have a way to hide it.
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
 
