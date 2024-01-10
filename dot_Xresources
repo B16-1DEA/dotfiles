@@ -1,53 +1,17 @@
+# Xresources file for xterm
+# -------------------------
 
-! There's potential cruft in here already, so TODO - clean it up before it gets worse and find a better way to include/link the theme. 
+# Set default font and size.
+xterm*renderFont: true
+xterm*faceName: JetBrainsMonoNL Nerd Font Thin
+xterm*faceSize: 13
 
-! Others I've tried -- they don't work with vim-airline
-!xterm*faceName: font pango: Inconsolata 11
-!xterm*faceName: font pango: Source Code Pro 11 
+# XTerms opened from here will be login shells; however, take note that I've configured
+# the pertinent i3wm keybindings to open a new terminal with a non-login shell to avoid
+# having stuff like motd spamming every new xterm and envvar pollution. However, this allows 
+# my first shell/window to see the MOTD.
+xterm*loginShell: true
 
-! This one is a favorite
-!xterm*faceName: font pango: JetBrainsMonoNerdFontPropo-Medium 11
-!xterm*faceName: font pango: "Material Icons:style=Regular" 11
-!xterm*faceName: font pango: "Bungee Spice:style=Regular" 11
-
-! Will this work with Powerline?
-xterm*faceName: font pango: Source Code Pro Medium for Powerline 11
-
-! Get rid of the annoying ass scrollbarin Urxvt active. TODO remove if I can. 
-URxvt.scrollBar: true
-
-! Grabbed locally out of ~/Themes/Xresources/Xresources-themes/
-!
-!  Original theme https://github.com/nathanbuchar/atom-one-dark-terminal
-*.foreground:    #ABB2BF
-*.background:    #1E2127
-*.cursorColor:   #5C6370
-*.highlightColor:#3A3F4B
-
-! Negro y gris
-*.color0:        #1E2127
-*.color8:        #5C6370
-! Rojos
-*.color1:        #E06C75
-*.color9:        #E06C75
-! Verde
-*.color2:        #98C379
-*.color10:       #98C379
-! Amarillo
-*.color3:        #D19A66
-*.color11:       #D19A66
-! Azul
-*.color4:        #61AFEF
-*.color12:       #61AFEF
-! Magenta
-*.color5:        #C678DD
-*.color13:       #C678DD
-! Cyan
-*.color6:        #56B6C2
-*.color14:       #56B6C2
-! Blanco
-*.color7:        #ABB2BF
-*.color15:       #FFFFFF
-! ---------------------- End of Theme ---------------------------- !
-
+# Theme
+#include "./Themes/Xresources/Xresources-themes/one-dark.Xresources"
 
