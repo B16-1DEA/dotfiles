@@ -34,12 +34,10 @@ fi
 # from which the above loop would find + run them. Order matters, though, so I'll have to figure
 # something out for that.
 exec i3 &
-exec xterm &
-exec xterm &
 exec $HOME/.config/polybar/launch.sh &
 exec $HOME/.fehbg &
 exec albert &
-exec xterm
+exec xterm 
 
 # Note above that the final `exec xterm` probably should not be launched in the background.
 # Also note above that order of operations matter for this configuration. Neither the status bar nor the background will appear if the non-bakgrounded xterm call precedes.
