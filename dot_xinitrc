@@ -37,7 +37,7 @@ exec i3 &
 exec $HOME/.config/polybar/launch.sh &
 exec $HOME/.fehbg &
 exec albert &
-exec xterm 
+exec xterm -maximized
 
 # Note above that the final `exec xterm` probably should not be launched in the background.
 # Also note above that order of operations matter for this configuration. Neither the status bar nor the background will appear if the non-backgrounded xterm call precedes.
