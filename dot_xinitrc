@@ -40,7 +40,7 @@ exec albert &
 exec xterm 
 
 # Note above that the final `exec xterm` probably should not be launched in the background.
-# Also note above that order of operations matter for this configuration. Neither the status bar nor the background will appear if the non-bakgrounded xterm call precedes.
+# Also note above that order of operations matter for this configuration. Neither the status bar nor the background will appear if the non-backgrounded xterm call precedes.
 
 # Also note that starting an xterm in the below fashion (with a -name argument specified) ignores the font config
 #exec xterm -geometry 80x66+0+0 -name login
