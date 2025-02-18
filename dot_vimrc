@@ -57,7 +57,7 @@ packadd github
 " Enable Github copilot
 :Copilot enable
 
-" Thought I needed to diable the tab binding for copilot because it doens't work sometimes. 
+" Thought I needed to disable the tab binding for copilot because it doens't work sometimes.
 " But now I am just confused. Copilot is a mystery.
 " imap <silent><script><expr> <C-Enter> copilot#Accept('\<CR>')
 " let g:copilot_no_tab_map = v:true

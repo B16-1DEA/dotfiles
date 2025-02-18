@@ -28,6 +28,9 @@ alias ll='ls -lah'
 # 	to a less inviting WWW
 alias lynx="lynx -accept-all-cookies -cookie-file='/dev/null'"
 
+# Alias to open R without the verbose startup message
+alias R='R --quiet'
+
 # Since insalling the Github Copilot plugin for VIM, it has been resetting my cursor to the top
 # of the screen after every exit of the app. This works around it.
 # Vim exits to clear terminal screen
@@ -41,3 +44,7 @@ function vim {
 
 PATH=$PATH:$HOME/bin
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/roothopper/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
